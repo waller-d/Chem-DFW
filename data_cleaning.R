@@ -250,9 +250,3 @@ df_ethnicity_semester <- rbind(df_ethnicity_fall_2, df_ethnicity_fall_AIAN, df_e
                                df_ethnicity_summer_Int, df_ethnicity_summer_NHPI, df_ethnicity_summer_Unknown, df_ethnicity_summer_White)
 df_ethnicity_semester$ethnicity <- as.factor(df_ethnicity_semester$ethnicity)
 df_ethnicity_semester <- gather(df_ethnicity_semester, measure, value, n_grades:"%_DFW")
-
-
-
-
-
-
