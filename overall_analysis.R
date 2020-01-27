@@ -47,3 +47,5 @@ df_ethnicity_all %>%
   scale_fill_gradient(low = "white", high = "red") +
   labs(x = "Ethnicity", fill = "DFW Rate")
 ggsave("grades_ethnicity_overall.png", units="in", width=15, height=5, dpi=750)
+
+

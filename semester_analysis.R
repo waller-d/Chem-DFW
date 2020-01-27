@@ -76,3 +76,5 @@ df_gender_semester_300 %>%
   scale_fill_gradient(low = "white", high = "red") +
   labs(x = "Gender", fill = "DFW Rate", title = "300 Level Chemistry Courses") +
   facet_grid(.~Course)
+
+
