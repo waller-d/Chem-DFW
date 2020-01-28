@@ -111,3 +111,54 @@ df_fgen_semester_300 %>%
   scale_fill_gradient(low = "white", high = "red") +
   labs(x = "First Generation Status", fill = "DFW Rate", title = "300 Level Chemistry Courses")
 ggsave("grades_fgen_300_semester.png", units="in", width=6, height=5, dpi=300)
+
+# Create heat maps for DFW rates by first generation status
+# DFW rates faceted by course
+df_fgen_semester_100 %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  ggplot(aes(fgen, Semester)) +
+  geom_tile(aes(fill = value), colour = "white") +
+  scale_fill_gradient(low = "white", high = "red" ) +
+  labs(x = "First Generation Status", fill = "DFW Rate", title = "100 Level Chemistry Courses") +
+  facet_grid(.~Course)
+ggsave("grades_fgen_100_semester_course.png", units="in", width=15, height=5, dpi=750)
+df_fgen_semester_200 %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  ggplot(aes(fgen, Semester)) +
+  geom_tile(aes(fill = value), colour = "white") +
+  scale_fill_gradient(low = "white", high = "red") +
+  labs(x = "First Generation Status", fill = "DFW Rate", title = "200 Level Chemistry Courses") +
+  facet_grid(.~Course)
+ggsave("grades_fgen_200_semester_course.png", units="in", width=15, height=5, dpi=750)
+df_fgen_semester_300 %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  ggplot(aes(fgen, Semester)) +
+  geom_tile(aes(fill = value), colour = "white") +
+  scale_fill_gradient(low = "white", high = "red") +
+  labs(x = "First Generation Status", fill = "DFW Rate", title = "300 Level Chemistry Courses") +
+  facet_grid(.~Course)
+ggsave("grades_fgen_300_semester_course.png", units="in", width=15, height=5, dpi=750)
+
+# Create heat maps for DFW rates by ethnicity
+# Combined DFW rates for all 100, 200, 300 level courses
+df_ethnicity_semester_100 %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  ggplot(aes(ethnicity, Semester)) +
+  geom_tile(aes(fill = value), colour = "white") +
+  scale_fill_gradient(low = "white", high = "red" ) +
+  labs(x = "Ethnicity", fill = "DFW Rate", title = "100 Level Chemistry Courses")
+ggsave("grades_ethnicity_100_semester.png", units="in", width=9, height=5, dpi=450)
+df_ethnicity_semester_200 %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  ggplot(aes(ethnicity, Semester)) +
+  geom_tile(aes(fill = value), colour = "white") +
+  scale_fill_gradient(low = "white", high = "red") +
+  labs(x = "Ethnicity", fill = "DFW Rate", title = "200 Level Chemistry Courses")
+ggsave("grades_ethnicity_200_semester.png", units="in", width=9, height=5, dpi=450)
+df_ethnicity_semester_300 %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  ggplot(aes(ethnicity, Semester)) +
+  geom_tile(aes(fill = value), colour = "white") +
+  scale_fill_gradient(low = "white", high = "red") +
+  labs(x = "Ethnicity", fill = "DFW Rate", title = "300 Level Chemistry Courses")
+ggsave("grades_ethnicity_300_semester.png", units="in", width=9, height=5, dpi=450)
