@@ -250,3 +250,12 @@ df_ethnicity_semester <- rbind(df_ethnicity_fall_2, df_ethnicity_fall_AIAN, df_e
                                df_ethnicity_summer_Int, df_ethnicity_summer_NHPI, df_ethnicity_summer_Unknown, df_ethnicity_summer_White)
 df_ethnicity_semester$ethnicity <- as.factor(df_ethnicity_semester$ethnicity)
 df_ethnicity_semester <- gather(df_ethnicity_semester, measure, value, n_grades:"%_DFW")
+
+semester_levels <- c("Fall 2008", "Spring 2009", "Summer 2009", "Fall 2009", "Spring 2010", "Summer 2010", "Fall 2010", "Spring 2011", "Summer 2011", 
+                     "Fall 2011", "Spring 2012", "Summer 2012", "Fall 2012", "Spring 2013", "Summer 2013", "Fall 2013", "Spring 2014", "Summer 2014", 
+                     "Fall 2014", "Spring 2015", "Summer 2015", "Fall 2015", "Spring 2016", "Summer 2016", "Fall 2016", "Spring 2017", "Summer 2017", 
+                     "Fall 2017", "Spring 2018", "Summer 2018", "Fall 2018", "Spring 2019", "Summer 2019")
+
+df_gender_semester$Semester_level <- factor(df_gender_semester$Semester, levels = semester_levels)
+df_fgen_semester$Semester_level <- factor(df_fgen_semester$Semester, levels = semester_levels)
+df_ethnicity_semester$Semester_level <- factor(df_ethnicity_semester$Semester, levels = semester_levels)
