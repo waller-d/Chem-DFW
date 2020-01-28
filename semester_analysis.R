@@ -62,6 +62,7 @@ df_gender_semester_100 %>%
   scale_fill_gradient(low = "white", high = "red" ) +
   labs(x = "Gender", fill = "DFW Rate", title = "100 Level Chemistry Courses") +
   facet_grid(.~Course)
+ggsave("grades_gender_100_semester_course.png", units="in", width=15, height=5, dpi=750)
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>% 
   ggplot(aes(gender, Semester)) +
@@ -69,6 +70,7 @@ df_gender_semester_200 %>%
   scale_fill_gradient(low = "white", high = "red") +
   labs(x = "Gender", fill = "DFW Rate", title = "200 Level Chemistry Courses") +
   facet_grid(.~Course)
+ggsave("grades_gender_200_semester_course.png", units="in", width=15, height=5, dpi=750)
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>% 
   ggplot(aes(gender, Semester)) +
@@ -76,3 +78,4 @@ df_gender_semester_300 %>%
   scale_fill_gradient(low = "white", high = "red") +
   labs(x = "Gender", fill = "DFW Rate", title = "300 Level Chemistry Courses") +
   facet_grid(.~Course)
+ggsave("grades_gender_300_semester_course.png", units="in", width=15, height=5, dpi=750)
