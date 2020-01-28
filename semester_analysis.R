@@ -162,3 +162,31 @@ df_ethnicity_semester_300 %>%
   scale_fill_gradient(low = "white", high = "red") +
   labs(x = "Ethnicity", fill = "DFW Rate", title = "300 Level Chemistry Courses")
 ggsave("grades_ethnicity_300_semester.png", units="in", width=12, height=5, dpi=450)
+
+# Create line plots to see change over time
+df_gender_semester %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  group_by(Semester_level, gender) %>% summarise(Mean = mean(value)) %>% 
+  ggplot(aes(x = Semester_level, y = Mean)) +
+  geom_point(aes(group = gender, color = gender)) +
+  geom_line(aes(group = gender, color = gender)) +
+  labs(x = "Semester", y = "DFW Rate", color = "DFW Rate")
+ggsave("grades_gender_semester_line.png", units="in", width=12, height=5, dpi=450)
+
+df_fgen_semester %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  group_by(Semester_level, fgen) %>% summarise(Mean = mean(value)) %>% 
+  ggplot(aes(x = Semester_level, y = Mean)) +
+  geom_point(aes(group = fgen, color = fgen)) +
+  geom_line(aes(group = fgen, color = fgen)) +
+  labs(x = "Semester", y = "DFW Rate", color = "DFW Rate")
+ggsave("grades_fgen_semester_line.png", units="in", width=12, height=5, dpi=450)
+
+df_ethnicity_semester %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  group_by(Semester_level, ethnicity) %>% summarise(Mean = mean(value)) %>% 
+  ggplot(aes(x = Semester_level, y = Mean)) +
+  geom_point(aes(group = ethnicity, color = ethnicity)) +
+  geom_line(aes(group = ethnicity, color = ethnicity)) +
+  labs(x = "Semester", y = "DFW Rate", color = "DFW Rate")
+ggsave("grades_ethnicity_semester_line.png", units="in", width=12, height=5, dpi=450)
