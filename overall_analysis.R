@@ -16,13 +16,13 @@
 # The number of missing values is the number of classes that we do not have data for a given group
 df_gender_all %>%
   group_by(gender, measure) %>%
-  summarise(Mean = mean(value, na.rm = TRUE), Variance = var(value, na.rm = TRUE), Missing = sum(is.na(value)), n())
+  summarise(Mean = mean(value, na.rm = TRUE), SD = sd(value, na.rm = TRUE), Missing = sum(is.na(value)), Courses = n(), N = sum(value, na.rm = TRUE))
 df_fgen_all %>%
   group_by(fgen, measure) %>%
-  summarise(Mean = mean(value, na.rm = TRUE), Variance = var(value, na.rm = TRUE), Missing = sum(is.na(value)))
+  summarise(Mean = mean(value, na.rm = TRUE), SD = sd(value, na.rm = TRUE), Missing = sum(is.na(value)), Courses = n(), N = sum(value, na.rm = TRUE))
 df_ethnicity_all %>%
   group_by(ethnicity, measure) %>%
-  summarise(Mean = mean(value, na.rm = TRUE), Variance = var(value, na.rm = TRUE), Missing = sum(is.na(value)))
+  summarise(Mean = mean(value, na.rm = TRUE), SD = sd(value, na.rm = TRUE), Missing = sum(is.na(value)), Courses = n(), N = sum(value, na.rm = TRUE))
 
 # Generate heat maps depicting for DFW rates by gender
 # Combined DFW rates for each course
