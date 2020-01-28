@@ -46,7 +46,7 @@ df_gender_all$measure[df_gender_all$measure=="n_grades_male" | df_gender_all$mea
 df_gender_all$measure[df_gender_all$measure=="n_DFW_male" | df_gender_all$measure=="n_DFW_female"] <- "n_DFW"
 df_gender_all$measure[df_gender_all$measure=="%_DFW_male" | df_gender_all$measure=="%_DFW_female"] <- "%_DFW"
 
-# create a column for first-generation as a factor and simplify measure descriptions
+# create a column for first generation as a factor and simplify measure descriptions
 df_fgen_all <- gather(df_fgen_all, measure, value, "n_grades_non-fgen":"%_DFW_fgen")
 df_fgen_all$fgen <- NA
 df_fgen_all[grepl("fgen", df_fgen_all$measure),4] <- "First Generation"
@@ -85,7 +85,7 @@ df_ethnicity_all$measure[df_ethnicity_all$measure=="%_DFW_2+" | df_ethnicity_all
                          | df_ethnicity_all$measure=="%_DFW_NH-PI" | df_ethnicity_all$measure=="%_DFW_Unknown" 
                          | df_ethnicity_all$measure=="%_DFW_White"] <- "%_DFW"
 
-# import semester data and trasnform into long form data with gender as a factor
+# import semester data and transform into long form data with gender as a factor
 df_gender_semester <- read_excel("DFW For UG CHM Courses_Fa08_to_Sum19.xlsx", sheet = 5, col_names = T, skip = 2)
 colnames(df_gender_semester) <- c("Course","Semester_Fall","n_grades_female_Fall","n_DFW_female_Fall", "%_DFW_female_Fall","n_grades_male_Fall","n_DFW_male_Fall","%_DFW_male_Fall",
                                   "Semester_Spring","n_grades_female_Spring","n_DFW_female_Spring", "%_DFW_female_Spring","n_grades_male_Spring","n_DFW_male_Spring","%_DFW_male_Spring",
@@ -112,7 +112,7 @@ df_gender_semester <- rbind(df_gender_fall_f, df_gender_fall_m, df_gender_spring
 df_gender_semester$gender <- as.factor(df_gender_semester$gender)
 df_gender_semester <- gather(df_gender_semester, measure, value, n_grades:"%_DFW")
 
-# import semester data and trasnform into long form data with first generation as a factor
+# import semester data and transform into long form data with first generation as a factor
 df_fgen_semester <- read_excel("DFW For UG CHM Courses_Fa08_to_Sum19.xlsx", sheet = 6, col_names = T, skip = 2)
 colnames(df_fgen_semester) <- c("Course","Semester_Fall","n_grades_non-fgen_Fall","n_DFW_non-fgen_Fall", "%_DFW_non-fgen_Fall","n_grades_fgen_Fall","n_DFW_fgen_Fall","%_DFW_fgen_Fall",
                                   "Semester_Spring","n_grades_non-fgen_Spring","n_DFW_non-fgen_Spring", "%_DFW_non-fgen_Spring","n_grades_fgen_Spring","n_DFW_fgen_Spring","%_DFW_fgen_Spring",
@@ -139,7 +139,7 @@ df_fgen_semester <- rbind(df_fgen_fall_f, df_fgen_fall_m, df_fgen_spring_f, df_f
 df_fgen_semester$fgen <- as.factor(df_fgen_semester$fgen)
 df_fgen_semester <- gather(df_fgen_semester, measure, value, n_grades:"%_DFW")
 
-# import semester data and trasnform into long form data with ethnicity as a factor
+# import semester data and transform into long form data with ethnicity as a factor
 df_ethnicity_semester_fall <- read_excel("DFW For UG CHM Courses_Fa08_to_Sum19.xlsx", sheet = 7, col_names = T, skip = 1)
 colnames(df_ethnicity_semester_fall) <- c("Course","Semester","n_grades_2+","n_DFW_2+", "%_DFW_2+","n_grades_AI-AN","n_DFW_AI-AN","%_DFW_AI-AN",
                                 "n_grades_Asian","n_DFW_Asian", "%_DFW_Asian","n_grades_B-AA","n_DFW_B-AA","%_DFW_B-AA",
@@ -159,22 +159,22 @@ df_ethnicity_fall_BAA <- select(df_ethnicity_semester_fall, Course, Semester, "n
 df_ethnicity_fall_BAA$ethnicity <- "Black or African American"
 colnames(df_ethnicity_fall_BAA) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_HL <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_H-L":"%_DFW_H-L")
-df_ethnicity_fall_HL$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_fall_HL$ethnicity <- "Hispanic/Latino"
 colnames(df_ethnicity_fall_HL) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_Int <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_Int":"%_DFW_Int")
-df_ethnicity_fall_Int$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_fall_Int$ethnicity <- "International"
 colnames(df_ethnicity_fall_Int) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_NHPI <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_NH-PI":"%_DFW_NH-PI")
-df_ethnicity_fall_NHPI$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_fall_NHPI$ethnicity <- "Native Hawaiian or Other Pacific Islander"
 colnames(df_ethnicity_fall_NHPI) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_Unknown <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_Unknown":"%_DFW_Unknown")
-df_ethnicity_fall_Unknown$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_fall_Unknown$ethnicity <- "Unknown"
 colnames(df_ethnicity_fall_Unknown) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_White <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_White":"%_DFW_White")
-df_ethnicity_fall_White$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_fall_White$ethnicity <- "White"
 colnames(df_ethnicity_fall_White) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 
-df_ethnicity_semester_spring <- read_excel("DFW For UG CHM Courses_Fa08_to_Sum19.xlsx", sheet = 7, col_names = T, skip = 1)
+df_ethnicity_semester_spring <- read_excel("DFW For UG CHM Courses_Fa08_to_Sum19.xlsx", sheet = 8, col_names = T, skip = 1)
 colnames(df_ethnicity_semester_spring) <- c("Course","Semester","n_grades_2+","n_DFW_2+", "%_DFW_2+","n_grades_AI-AN","n_DFW_AI-AN","%_DFW_AI-AN",
                                           "n_grades_Asian","n_DFW_Asian", "%_DFW_Asian","n_grades_B-AA","n_DFW_B-AA","%_DFW_B-AA",
                                           "n_grades_H-L","n_DFW_H-L","%_DFW_H-L","n_grades_Int","n_DFW_Int","%_DFW_Int","n_grades_NH-PI",
@@ -193,22 +193,22 @@ df_ethnicity_spring_BAA <- select(df_ethnicity_semester_spring, Course, Semester
 df_ethnicity_spring_BAA$ethnicity <- "Black or African American"
 colnames(df_ethnicity_spring_BAA) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_HL <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_H-L":"%_DFW_H-L")
-df_ethnicity_spring_HL$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_spring_HL$ethnicity <- "Hispanic/Latino"
 colnames(df_ethnicity_spring_HL) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_Int <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_Int":"%_DFW_Int")
-df_ethnicity_spring_Int$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_spring_Int$ethnicity <- "International"
 colnames(df_ethnicity_spring_Int) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_NHPI <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_NH-PI":"%_DFW_NH-PI")
-df_ethnicity_spring_NHPI$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_spring_NHPI$ethnicity <- "Native Hawaiian or Other Pacific Islander"
 colnames(df_ethnicity_spring_NHPI) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_Unknown <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_Unknown":"%_DFW_Unknown")
-df_ethnicity_spring_Unknown$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_spring_Unknown$ethnicity <- "Unknown"
 colnames(df_ethnicity_spring_Unknown) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_White <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_White":"%_DFW_White")
-df_ethnicity_spring_White$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_spring_White$ethnicity <- "White"
 colnames(df_ethnicity_spring_White) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 
-df_ethnicity_semester_summer <- read_excel("DFW For UG CHM Courses_Fa08_to_Sum19.xlsx", sheet = 7, col_names = T, skip = 1)
+df_ethnicity_semester_summer <- read_excel("DFW For UG CHM Courses_Fa08_to_Sum19.xlsx", sheet = 9, col_names = T, skip = 1)
 colnames(df_ethnicity_semester_summer) <- c("Course","Semester","n_grades_2+","n_DFW_2+", "%_DFW_2+","n_grades_AI-AN","n_DFW_AI-AN","%_DFW_AI-AN",
                                           "n_grades_Asian","n_DFW_Asian", "%_DFW_Asian","n_grades_B-AA","n_DFW_B-AA","%_DFW_B-AA",
                                           "n_grades_H-L","n_DFW_H-L","%_DFW_H-L","n_grades_Int","n_DFW_Int","%_DFW_Int","n_grades_NH-PI",
@@ -227,19 +227,19 @@ df_ethnicity_summer_BAA <- select(df_ethnicity_semester_summer, Course, Semester
 df_ethnicity_summer_BAA$ethnicity <- "Black or African American"
 colnames(df_ethnicity_summer_BAA) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_HL <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_H-L":"%_DFW_H-L")
-df_ethnicity_summer_HL$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_summer_HL$ethnicity <- "Hispanic/Latino"
 colnames(df_ethnicity_summer_HL) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_Int <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_Int":"%_DFW_Int")
-df_ethnicity_summer_Int$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_summer_Int$ethnicity <- "International"
 colnames(df_ethnicity_summer_Int) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_NHPI <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_NH-PI":"%_DFW_NH-PI")
-df_ethnicity_summer_NHPI$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_summer_NHPI$ethnicity <- "Native Hawaiian or Other Pacific Islander"
 colnames(df_ethnicity_summer_NHPI) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_Unknown <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_Unknown":"%_DFW_Unknown")
-df_ethnicity_summer_Unknown$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_summer_Unknown$ethnicity <- "Unknown"
 colnames(df_ethnicity_summer_Unknown) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_White <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_White":"%_DFW_White")
-df_ethnicity_summer_White$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_summer_White$ethnicity <- "White"
 colnames(df_ethnicity_summer_White) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 
 df_ethnicity_semester <- rbind(df_ethnicity_fall_2, df_ethnicity_fall_AIAN, df_ethnicity_fall_Asian, df_ethnicity_fall_BAA, df_ethnicity_fall_HL,
