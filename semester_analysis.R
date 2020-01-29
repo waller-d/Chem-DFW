@@ -190,3 +190,15 @@ df_ethnicity_semester %>%
   geom_line(aes(group = ethnicity, color = ethnicity)) +
   labs(x = "Semester", y = "DFW Rate", color = "DFW Rate")
 ggsave("grades_ethnicity_semester_line.png", units="in", width=12, height=5, dpi=450)
+
+df_ethnicity_semester %>%
+  filter(measure == "%_DFW", value != is.na(value)) %>% 
+  filter(ethnicity == "Asian" | ethnicity == "Black or African American" | 
+           ethnicity == "Hispanic/Latino" | ethnicity == "International" | 
+           ethnicity == "White") %>% 
+  group_by(Semester_level, ethnicity) %>% summarise(Mean = mean(value)) %>% 
+  ggplot(aes(x = Semester_level, y = Mean)) +
+  geom_point(aes(group = ethnicity, color = ethnicity)) +
+  geom_line(aes(group = ethnicity, color = ethnicity)) +
+  labs(x = "Semester", y = "DFW Rate", color = "DFW Rate")
+ggsave("grades_ethnicity_semester_line_simple.png", units="in", width=12, height=5, dpi=450)
