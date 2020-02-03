@@ -259,3 +259,48 @@ semester_levels <- c("Fall 2008", "Spring 2009", "Summer 2009", "Fall 2009", "Sp
 df_gender_semester$Semester_level <- factor(df_gender_semester$Semester, levels = semester_levels)
 df_fgen_semester$Semester_level <- factor(df_fgen_semester$Semester, levels = semester_levels)
 df_ethnicity_semester$Semester_level <- factor(df_ethnicity_semester$Semester, levels = semester_levels)
+
+# Adding variables for semester and year separately
+years <- as.character(c(2008:2019))
+
+df_gender_semester$date <- NA
+df_gender_semester$date[str_detect(df_gender_semester$Semester, "^Su")] <- "Summer"
+df_gender_semester$date[str_detect(df_gender_semester$Semester, "^Sp")] <- "Spring"
+df_gender_semester$date[str_detect(df_gender_semester$Semester, "^F")] <- "Fall"
+
+df_fgen_semester$date <- NA
+df_fgen_semester$date[str_detect(df_fgen_semester$Semester, "^Su")] <- "Summer"
+df_fgen_semester$date[str_detect(df_fgen_semester$Semester, "^Sp")] <- "Spring"
+df_fgen_semester$date[str_detect(df_fgen_semester$Semester, "^F")] <- "Fall"
+
+df_ethnicity_semester$date <- NA
+df_ethnicity_semester$date[str_detect(df_ethnicity_semester$Semester, "^Su")] <- "Summer"
+df_ethnicity_semester$date[str_detect(df_ethnicity_semester$Semester, "^Sp")] <- "Spring"
+df_ethnicity_semester$date[str_detect(df_ethnicity_semester$Semester, "^F")] <- "Fall"
+
+df_gender_semester$year <- NA
+df_fgen_semester$year <- NA
+df_ethnicity_semester$year <- NA
+
+for(i in 1:length(years)){
+  df_gender_semester$year[str_detect(df_gender_semester$Semester, years[i])] <- years[i]
+  df_fgen_semester$year[str_detect(df_fgen_semester$Semester, years[i])] <- years[i]
+  df_ethnicity_semester$year[str_detect(df_ethnicity_semester$Semester, years[i])] <- years[i]
+}
+
+df_gender_semester$year <- as.factor(df_gender_semester$year)
+df_fgen_semester$year <- as.factor(df_fgen_semester$year)
+df_ethnicity_semester$year <- as.factor(df_ethnicity_semester$year)
+
+# Split data based on 100, 200, 300 level courses
+df_gender_semester_100 <- df_gender_semester[grepl("CHM1", df_gender_semester$Course),]
+df_gender_semester_200 <- df_gender_semester[grepl("CHM2", df_gender_semester$Course),]
+df_gender_semester_300 <- df_gender_semester[grepl("CHM3", df_gender_semester$Course),]
+
+df_fgen_semester_100 <- df_fgen_semester[grepl("CHM1", df_fgen_semester$Course),]
+df_fgen_semester_200 <- df_fgen_semester[grepl("CHM2", df_fgen_semester$Course),]
+df_fgen_semester_300 <- df_fgen_semester[grepl("CHM3", df_fgen_semester$Course),]
+
+df_ethnicity_semester_100 <- df_ethnicity_semester[grepl("CHM1", df_ethnicity_semester$Course),]
+df_ethnicity_semester_200 <- df_ethnicity_semester[grepl("CHM2", df_ethnicity_semester$Course),]
+df_ethnicity_semester_300 <- df_ethnicity_semester[grepl("CHM3", df_ethnicity_semester$Course),]
