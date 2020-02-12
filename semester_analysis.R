@@ -107,7 +107,8 @@ df_fgen_semester_100 %>%
   geom_tile(aes(fill = value), colour = "white") +
   scale_fill_gradient(low = "white", high = "red" ) +
   labs(x = "First Generation Status", fill = "DFW Rate", title = "100 Level Chemistry Courses") +
-  facet_grid(.~Course)
+  facet_grid(.~Course) +
+  theme(axis.text.x = element_text(angle = 90))
 ggsave("grades_fgen_100_semester_course.png", units="in", width=15, height=5, dpi=750)
 df_fgen_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>% 
@@ -115,7 +116,8 @@ df_fgen_semester_200 %>%
   geom_tile(aes(fill = value), colour = "white") +
   scale_fill_gradient(low = "white", high = "red") +
   labs(x = "First Generation Status", fill = "DFW Rate", title = "200 Level Chemistry Courses") +
-  facet_grid(.~Course)
+  facet_grid(.~Course) +
+  theme(axis.text.x = element_text(angle = 90))
 ggsave("grades_fgen_200_semester_course.png", units="in", width=15, height=5, dpi=750)
 df_fgen_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>% 
@@ -123,7 +125,8 @@ df_fgen_semester_300 %>%
   geom_tile(aes(fill = value), colour = "white") +
   scale_fill_gradient(low = "white", high = "red") +
   labs(x = "First Generation Status", fill = "DFW Rate", title = "300 Level Chemistry Courses") +
-  facet_grid(.~Course)
+  facet_grid(.~Course) +
+  theme(axis.text.x = element_text(angle = 90))
 ggsave("grades_fgen_300_semester_course.png", units="in", width=15, height=5, dpi=750)
 
 # Create heat maps for DFW rates by ethnicity
@@ -133,7 +136,8 @@ df_ethnicity_semester_100 %>%
   ggplot(aes(ethnicity, Semester)) +
   geom_tile(aes(fill = value), colour = "white") +
   scale_fill_gradient(low = "white", high = "red" ) +
-  labs(x = "Ethnicity", fill = "DFW Rate", title = "100 Level Chemistry Courses")
+  labs(x = "Ethnicity", fill = "DFW Rate", title = "100 Level Chemistry Courses") +
+  theme(axis.text.x = element_text(angle = 90))
 ggsave("grades_ethnicity_100_semester.png", units="in", width=12, height=5, dpi=450)
 df_ethnicity_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>% 
@@ -157,7 +161,8 @@ df_gender_semester %>%
   ggplot(aes(x = Semester_level, y = Mean)) +
   geom_point(aes(group = gender, color = gender)) +
   geom_line(aes(group = gender, color = gender)) +
-  labs(x = "Semester", y = "DFW Rate", color = "DFW Rate")
+  labs(x = "Semester", y = "DFW Rate", color = "DFW Rate") +
+  theme(axis.text.x = element_text(angle = 90))
 ggsave("grades_gender_semester_line.png", units="in", width=12, height=5, dpi=450)
 
 df_fgen_semester %>%
@@ -166,7 +171,8 @@ df_fgen_semester %>%
   ggplot(aes(x = Semester_level, y = Mean)) +
   geom_point(aes(group = fgen, color = fgen)) +
   geom_line(aes(group = fgen, color = fgen)) +
-  labs(x = "Semester", y = "DFW Rate", color = "DFW Rate")
+  labs(x = "Semester", y = "DFW Rate", color = "DFW Rate") +
+  theme(axis.text.x = element_text(angle = 90))
 ggsave("grades_fgen_semester_line.png", units="in", width=12, height=5, dpi=450)
 
 df_ethnicity_semester %>%
@@ -201,7 +207,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_separate.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_100_line_separate.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value), !str_detect(Semester, "^Su")) %>%
@@ -212,7 +218,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~.) + # Faceting only by course
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_overlay.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_100_line_overlay.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value), !str_detect(Semester, "^Su")) %>%
@@ -223,7 +229,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_separate.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_200_line_separate.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value), !str_detect(Semester, "^Su")) %>%
@@ -234,7 +240,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~.) + # Faceting only by course
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_overlay.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_200_line_overlay.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value), !str_detect(Semester, "^Su")) %>%
@@ -245,7 +251,7 @@ df_gender_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_300_line_separate.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_300_line_separate.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value), !str_detect(Semester, "^Su")) %>%
@@ -256,7 +262,7 @@ df_gender_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~.) + # Faceting only by course
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_300_line_overlay.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_300_line_overlay.png", units="in", width=15, height=10, dpi=750)
 
 df_fgen_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value), !str_detect(Semester, "^Su")) %>% 
@@ -419,7 +425,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_term.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_100_line_term.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -430,7 +436,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~.) + # Faceting only by course
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_overlay_term.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_100_line_overlay_term.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -441,7 +447,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_term.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_200_line_term.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -452,7 +458,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~.) + # Faceting only by course
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_overlay_term.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_200_line_overlay_term.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -463,7 +469,7 @@ df_gender_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_300_line_term.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_300_line_term.png", units="in", width=15, height=10, dpi=750)
 
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -474,7 +480,7 @@ df_gender_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender") +
   facet_grid(Course~.) + # Faceting only by course
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_300_line_overlay_term.png", units="in", width=12, height=5, dpi=450)
+ggsave("grades_gender_semester_course_300_line_overlay_term.png", units="in", width=15, height=10, dpi=750)
 
 df_fgen_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>% 
@@ -638,7 +644,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Fall Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_simple_overlay_fall.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_gender_semester_course_100_line_simple_overlay_fall.png", units="in", width=6, height=10, dpi=600)
 df_gender_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -649,7 +655,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Spring Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_simple_overlay_spring.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_gender_semester_course_100_line_simple_overlay_spring.png", units="in", width=6, height=10, dpi=600)
 df_gender_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -660,7 +666,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Summer Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_simple_overlay_summer.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_gender_semester_course_100_line_simple_overlay_summer.png", units="in", width=6, height=10, dpi=600)
 
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -672,7 +678,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Fall Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_simple_overlay_fall.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_gender_semester_course_200_line_simple_overlay_fall.png", units="in", width=6, height=10, dpi=600)
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -683,7 +689,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Spring Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_simple_overlay_spring.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_gender_semester_course_200_line_simple_overlay_spring.png", units="in", width=6, height=10, dpi=600)
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -694,7 +700,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Summer Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_simple_overlay_summer.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_gender_semester_course_200_line_simple_overlay_summer.png", units="in", width=6, height=10, dpi=600)
 
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -706,7 +712,7 @@ df_gender_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Fall Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_300_line_simple_overlay_fall.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_gender_semester_course_300_line_simple_overlay_fall.png", units="in", width=6, height=10, dpi=600)
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -717,7 +723,7 @@ df_gender_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Spring Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_300_line_simple_overlay_spring.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_gender_semester_course_300_line_simple_overlay_spring.png", units="in", width=6, height=10, dpi=600)
 
 # Creating plots for each course separated by term based on first generation status
 
@@ -731,7 +737,7 @@ df_fgen_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Fall Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_100_line_simple_overlay_fall.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_fgen_semester_course_100_line_simple_overlay_fall.png", units="in", width=6, height=10, dpi=600)
 df_fgen_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -742,7 +748,7 @@ df_fgen_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Spring Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_100_line_simple_overlay_spring.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_fgen_semester_course_100_line_simple_overlay_spring.png", units="in", width=6, height=10, dpi=600)
 df_fgen_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -753,7 +759,7 @@ df_fgen_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Summer Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_100_line_simple_overlay_summer.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_fgen_semester_course_100_line_simple_overlay_summer.png", units="in", width=6, height=10, dpi=600)
 
 df_fgen_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -765,7 +771,7 @@ df_fgen_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Fall Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_200_line_simple_overlay_fall.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_fgen_semester_course_200_line_simple_overlay_fall.png", units="in", width=6, height=10, dpi=600)
 df_fgen_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -776,7 +782,7 @@ df_fgen_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Spring Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_200_line_simple_overlay_spring.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_fgen_semester_course_200_line_simple_overlay_spring.png", units="in", width=6, height=10, dpi=600)
 df_fgen_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -787,7 +793,7 @@ df_fgen_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Summer Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_200_line_simple_overlay_summer.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_fgen_semester_course_200_line_simple_overlay_summer.png", units="in", width=6, height=10, dpi=600)
 
 df_fgen_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -799,7 +805,7 @@ df_fgen_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Fall Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_300_line_simple_overlay_fall.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_fgen_semester_course_300_line_simple_overlay_fall.png", units="in", width=6, height=10, dpi=600)
 df_fgen_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -810,7 +816,7 @@ df_fgen_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Spring Term") +
   facet_grid(Course~.) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_300_line_simple_overlay_spring.png", units="in", width=15, height=10, dpi=750)
+ggsave("grades_fgen_semester_course_300_line_simple_overlay_spring.png", units="in", width=6, height=10, dpi=600)
 
 # Creating plots for each course separated by term based on ethnicity
 
@@ -941,7 +947,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Fall Term") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_simple_fall.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_gender_semester_course_100_line_simple_fall.png", units="in", width=6, height=8, dpi=480)
 df_gender_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -950,9 +956,9 @@ df_gender_semester_100 %>%
   geom_point(aes(group = gender, color = gender)) +
   geom_line(aes(group = gender, color = gender)) +
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Spring Term") +
-  facet_grid(Course~.) + 
+  facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_simple_spring.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_gender_semester_course_100_line_simple_spring.png", units="in", width=6, height=8, dpi=480)
 df_gender_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -963,7 +969,7 @@ df_gender_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Summer Term") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_100_line_simple_summer.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_gender_semester_course_100_line_simple_summer.png", units="in", width=6, height=8, dpi=480)
 
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -975,7 +981,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Fall Term") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_simple_fall.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_gender_semester_course_200_line_simple_fall.png", units="in", width=6, height=8, dpi=480)
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -986,7 +992,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Spring Term") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_simple_spring.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_gender_semester_course_200_line_simple_spring.png", units="in", width=6, height=8, dpi=480)
 df_gender_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -997,7 +1003,7 @@ df_gender_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Summer Term") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_200_line_simple_summer.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_gender_semester_course_200_line_simple_summer.png", units="in", width=6, height=8, dpi=480)
 
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -1009,7 +1015,7 @@ df_gender_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Fall Term") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_300_line_simple_fall.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_gender_semester_course_300_line_simple_fall.png", units="in", width=6, height=8, dpi=480)
 df_gender_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, gender) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -1020,7 +1026,7 @@ df_gender_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "Gender", title = "Spring Term") +
   facet_grid(Course~gender) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_gender_semester_course_300_line_simple_spring.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_gender_semester_course_300_line_simple_spring.png", units="in", width=6, height=8, dpi=480)
 
 # Creating plots for each course separated by term faceted first generation status
 
@@ -1034,7 +1040,7 @@ df_fgen_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Fall Term") +
   facet_grid(Course~fgen) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_100_line_simple_fall.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_fgen_semester_course_100_line_simple_fall.png", units="in", width=6, height=8, dpi=480)
 df_fgen_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -1045,7 +1051,7 @@ df_fgen_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Spring Term") +
   facet_grid(Course~fgen) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_100_line_simple_spring.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_fgen_semester_course_100_line_simple_spring.png", units="in", width=6, height=8, dpi=480)
 df_fgen_semester_100 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -1056,7 +1062,7 @@ df_fgen_semester_100 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Summer Term") +
   facet_grid(Course~fgen) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_100_line_simple_summer.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_fgen_semester_course_100_line_simple_summer.png", units="in", width=6, height=8, dpi=480)
 
 df_fgen_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -1068,7 +1074,7 @@ df_fgen_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Fall Term") +
   facet_grid(Course~fgen) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_200_line_simple_fall.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_fgen_semester_course_200_line_simple_fall.png", units="in", width=6, height=8, dpi=480)
 df_fgen_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -1079,7 +1085,7 @@ df_fgen_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Spring Term") +
   facet_grid(Course~fgen) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_200_line_simple_spring.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_fgen_semester_course_200_line_simple_spring.png", units="in", width=6, height=8, dpi=480)
 df_fgen_semester_200 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -1090,7 +1096,7 @@ df_fgen_semester_200 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Summer Term") +
   facet_grid(Course~fgen) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_200_line_simple_summer.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_fgen_semester_course_200_line_simple_summer.png", units="in", width=6, height=8, dpi=480)
 
 df_fgen_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
@@ -1102,7 +1108,7 @@ df_fgen_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Fall Term") +
   facet_grid(Course~fgen) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_300_line_simple_fall.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_fgen_semester_course_300_line_simple_fall.png", units="in", width=6, height=8, dpi=480)
 df_fgen_semester_300 %>%
   filter(measure == "%_DFW", value != is.na(value)) %>%
   group_by(year, date, Course, fgen) %>% summarise(Mean = mean(value, na.rm = TRUE)) %>% 
@@ -1113,7 +1119,7 @@ df_fgen_semester_300 %>%
   labs(x = "Semester", y = "DFW Rate", color = "fgen", title = "Spring Term") +
   facet_grid(Course~fgen) + 
   theme(axis.text.x = element_text(angle = 90))
-ggsave("grades_fgen_semester_course_300_line_simple_spring.png", units="in", width=6, height=6, dpi=360)
+ggsave("grades_fgen_semester_course_300_line_simple_spring.png", units="in", width=6, height=8, dpi=480)
 
 # Creating plots for each course separated by term faceted ethnicity
 
