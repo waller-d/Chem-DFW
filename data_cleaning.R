@@ -150,13 +150,13 @@ df_ethnicity_fall_2 <- select(df_ethnicity_semester_fall, Course, Semester, "n_g
 df_ethnicity_fall_2$ethnicity <- "2 or more races"
 colnames(df_ethnicity_fall_2) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_AIAN <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_AI-AN":"%_DFW_AI-AN")
-df_ethnicity_fall_AIAN$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_fall_AIAN$ethnicity <- "American Indian or\nAlaska Native"
 colnames(df_ethnicity_fall_AIAN) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_Asian <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_Asian":"%_DFW_Asian")
 df_ethnicity_fall_Asian$ethnicity <- "Asian"
 colnames(df_ethnicity_fall_Asian) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_BAA <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_B-AA":"%_DFW_B-AA")
-df_ethnicity_fall_BAA$ethnicity <- "Black or African American"
+df_ethnicity_fall_BAA$ethnicity <- "Black or\nAfrican American"
 colnames(df_ethnicity_fall_BAA) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_HL <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_H-L":"%_DFW_H-L")
 df_ethnicity_fall_HL$ethnicity <- "Hispanic/Latino"
@@ -165,7 +165,7 @@ df_ethnicity_fall_Int <- select(df_ethnicity_semester_fall, Course, Semester, "n
 df_ethnicity_fall_Int$ethnicity <- "International"
 colnames(df_ethnicity_fall_Int) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_NHPI <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_NH-PI":"%_DFW_NH-PI")
-df_ethnicity_fall_NHPI$ethnicity <- "Native Hawaiian or Other Pacific Islander"
+df_ethnicity_fall_NHPI$ethnicity <- "Native Hawaiian or\nOther Pacific Islander"
 colnames(df_ethnicity_fall_NHPI) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_fall_Unknown <- select(df_ethnicity_semester_fall, Course, Semester, "n_grades_Unknown":"%_DFW_Unknown")
 df_ethnicity_fall_Unknown$ethnicity <- "Unknown"
@@ -184,13 +184,13 @@ df_ethnicity_spring_2 <- select(df_ethnicity_semester_spring, Course, Semester, 
 df_ethnicity_spring_2$ethnicity <- "2 or more races"
 colnames(df_ethnicity_spring_2) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_AIAN <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_AI-AN":"%_DFW_AI-AN")
-df_ethnicity_spring_AIAN$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_spring_AIAN$ethnicity <- "American Indian or\nAlaska Native"
 colnames(df_ethnicity_spring_AIAN) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_Asian <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_Asian":"%_DFW_Asian")
 df_ethnicity_spring_Asian$ethnicity <- "Asian"
 colnames(df_ethnicity_spring_Asian) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_BAA <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_B-AA":"%_DFW_B-AA")
-df_ethnicity_spring_BAA$ethnicity <- "Black or African American"
+df_ethnicity_spring_BAA$ethnicity <- "Black or\nAfrican American"
 colnames(df_ethnicity_spring_BAA) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_HL <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_H-L":"%_DFW_H-L")
 df_ethnicity_spring_HL$ethnicity <- "Hispanic/Latino"
@@ -199,7 +199,7 @@ df_ethnicity_spring_Int <- select(df_ethnicity_semester_spring, Course, Semester
 df_ethnicity_spring_Int$ethnicity <- "International"
 colnames(df_ethnicity_spring_Int) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_NHPI <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_NH-PI":"%_DFW_NH-PI")
-df_ethnicity_spring_NHPI$ethnicity <- "Native Hawaiian or Other Pacific Islander"
+df_ethnicity_spring_NHPI$ethnicity <- "Native Hawaiian or\nOther Pacific Islander"
 colnames(df_ethnicity_spring_NHPI) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_spring_Unknown <- select(df_ethnicity_semester_spring, Course, Semester, "n_grades_Unknown":"%_DFW_Unknown")
 df_ethnicity_spring_Unknown$ethnicity <- "Unknown"
@@ -218,13 +218,13 @@ df_ethnicity_summer_2 <- select(df_ethnicity_semester_summer, Course, Semester, 
 df_ethnicity_summer_2$ethnicity <- "2 or more races"
 colnames(df_ethnicity_summer_2) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_AIAN <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_AI-AN":"%_DFW_AI-AN")
-df_ethnicity_summer_AIAN$ethnicity <- "American Indian or Alaska Native"
+df_ethnicity_summer_AIAN$ethnicity <- "American Indian or\nAlaska Native"
 colnames(df_ethnicity_summer_AIAN) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_Asian <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_Asian":"%_DFW_Asian")
 df_ethnicity_summer_Asian$ethnicity <- "Asian"
 colnames(df_ethnicity_summer_Asian) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_BAA <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_B-AA":"%_DFW_B-AA")
-df_ethnicity_summer_BAA$ethnicity <- "Black or African American"
+df_ethnicity_summer_BAA$ethnicity <- "Black or\nAfrican American"
 colnames(df_ethnicity_summer_BAA) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_HL <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_H-L":"%_DFW_H-L")
 df_ethnicity_summer_HL$ethnicity <- "Hispanic/Latino"
@@ -233,7 +233,7 @@ df_ethnicity_summer_Int <- select(df_ethnicity_semester_summer, Course, Semester
 df_ethnicity_summer_Int$ethnicity <- "International"
 colnames(df_ethnicity_summer_Int) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_NHPI <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_NH-PI":"%_DFW_NH-PI")
-df_ethnicity_summer_NHPI$ethnicity <- "Native Hawaiian or Other Pacific Islander"
+df_ethnicity_summer_NHPI$ethnicity <- "Native Hawaiian or\nOther Pacific Islander"
 colnames(df_ethnicity_summer_NHPI) <- c("Course","Semester","n_grades","n_DFW", "%_DFW","ethnicity")
 df_ethnicity_summer_Unknown <- select(df_ethnicity_semester_summer, Course, Semester, "n_grades_Unknown":"%_DFW_Unknown")
 df_ethnicity_summer_Unknown$ethnicity <- "Unknown"
